@@ -1,0 +1,98 @@
+﻿@model PracticaJigsaw.Models.Rompecabezas
+
+@{
+    ViewData["Title"] = "Añadir";
+}
+
+<h1>Añadir nuevo</h1>
+
+<h4>Rompecabezas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumPiezas" class="control-label"></label>
+                <select name="NumPiezas">
+                    <option value=0>Selecciona</option>
+                    <option value=10>10</option>
+                    <option value=50>50</option>
+                    <option value=100>100</option>
+                    <option value=500>500</option>
+                    <option value=1000>1000</option>
+                    <option value=1500>1500</option>
+                    <option value=2000>2000</option>
+                </select>
+                <span asp-validation-for="NumPiezas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RangoEdad" class="control-label"></label>
+                <select name="RangoEdad">
+                    <option value="">Selecciona</option>
+                    <option value="Infante 0-5 Años">0-5 Años</option>
+                    <option value="Niño 5-10 Años">5-10 Años</option>
+                    <option value="Adolescentes 10-16 Años">10-16 Años</option>
+                    <option value="Jovenes adultos 17-25 Años">17-25 Años</option>
+                    <option value="Adultos 25-75 Años">25-75 Años</option>
+                </select>
+                <span asp-validation-for="RangoEdad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Distribuidor" class="control-label"></label>
+                <input asp-for="Distribuidor" class="form-control" />
+                <span asp-validation-for="Distribuidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tema" class="control-label"></label>
+                <input asp-for="Tema" class="form-control" />
+                <span asp-validation-for="Tema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medidas" class="control-label"></label>
+                <select name="Medidas">
+                    <option value="">Selecciona</option>
+                    <option value="10 x 10">Cuadrado</option>
+                    <option value="15 x 15">Rectangular</option>
+                    <option value="25 x 25">Rectangular Mediano</option>
+                    <option value="75 x 75">Regular</option>
+                    <option value="150 x 150">Grande</option>
+                    <option value="25 x 75">Alargado</option>
+                    <option value="35 x 100">Alargado Grande</option>
+                </select>
+                <span asp-validation-for="Medidas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver al catalogo</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,58 @@
+﻿@model PracticaJigsaw.Models.FiltrarVM
+
+@{
+    ViewData["Title"] = "Busqueda de Rompecabezas";
+}
+
+<h1>Busca el tipo de rompecabezas de nuestro inventario</h1>
+
+<form asp-controller="Rompecabezas" asp-action="Busqueda" method="get">
+    <p>
+        Tema: <select asp-for="BuscarTema" asp-items="Model.ListaTema" name="bTema">
+            <option value="">Todos</option>
+        </select>
+        Medidas: <select asp-for="BuscarSize" asp-items="Model.ListaSize" name="bSize">
+            <option value="">Todos</option>
+        </select>
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Jigs[0].Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Jigs[0].Tema)</th>
+            <th>@Html.DisplayNameFor(model => model.Jigs[0].NumPiezas)</th>
+            <th>@Html.DisplayNameFor(model => model.Jigs[0].Medidas)</th>
+            <th>@Html.DisplayNameFor(model => model.Jigs[0].Precio)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Jigs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tema)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumPiezas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medidas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to List</a>
